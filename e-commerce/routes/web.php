@@ -52,5 +52,8 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 });
 
+Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::get('mail/send', [AuthController::class, 'sendMail']);
+
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::get('welcome', [HomeController::class, 'logout'])->name('welcome');
