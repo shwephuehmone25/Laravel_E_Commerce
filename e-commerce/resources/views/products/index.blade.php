@@ -280,7 +280,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Trendy Products</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">{{__('Trendy Products')}}</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             @foreach ($products as $product)
@@ -299,7 +299,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm text-dark p-0">
-                                <i class="fas fa-eye text-primary mr-1"></i>View Detail
+                                <i class="fas fa-eye text-primary mr-1"></i>{{__('View Detail')}}
                             </a>   
                             @include('user.likeable', ['model' => $product])
                         </div>
@@ -335,7 +335,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
+        <h2 class="section-title px-5"><span class="px-2">{{__('Just Arrived')}}</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             @foreach ($latest as $latestProduct)
@@ -352,7 +352,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="{{ route('product.show', $latestProduct->id) }}" class="btn btn-sm text-dark p-0">
-                            <i class="fas fa-eye text-primary mr-1"></i>View Detail
+                            <i class="fas fa-eye text-primary mr-1"></i>{{__('View Detail')}}
                         </a>
                         @include('user.likeable', ['model' => $latestProduct])
                     </div>

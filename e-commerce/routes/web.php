@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 Route::middleware('auth:sanctum')->group(function () {
     Route::resource('categories', CategoryController::class);
@@ -46,6 +42,14 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('like', [ProductController::class, 'like'])->name('like');
     Route::delete('like', [ProductController::class, 'unlike'])->name('unlike');
+
+});
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
 });
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');

@@ -215,20 +215,16 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
     public function cart()
     {
         return view('cart');
     }
 
     /**
-     * Write code on Method
+     * Store a newly added products in session.
      *
-     * @return response()
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function addToCart($id)
     {
@@ -248,28 +244,33 @@ class ProductController extends Controller
         }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+
+        return redirect()->back()->with('success', 'A Product is added to cart successfully!');
     }
 
     /**
-     * Write code on Method
+     * Update the specified product in cart.
      *
-     * @return response()
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
+
     public function updateCart(Request $request)
     {
         if ($request->id && $request->quantity) {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
+            session()->flash('success', 'Cart is updated successfully');
         }
     }
 
     /**
-     * Write code on Method
+     * Remove the specified product from cart.
      *
-     * @return response()
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function remove(Request $request)
     {
@@ -279,7 +280,7 @@ class ProductController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product removed successfully');
+            session()->flash('success', 'A Product is removed successfully');
         }
     }
 }
