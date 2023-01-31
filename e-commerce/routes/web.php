@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -35,15 +34,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::get('category/{category_id}', [ProductController::class, 'relatedProducts'])->name('category.show');
 
-    Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
-    Route::post('/cart/create', [CartController::class, 'addToCart'])->name('cart.store');
-    Route::post('cart/update', [CartController::class, 'updateCart'])->name('cart.update');
-    Route::post('cart/remove', [CartController::class, 'removeCart'])->name('cart.remove');
-    Route::post('cart/clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+    Route::get('cart', [ProductController::class, 'cart'])->name('cart.list');
+    Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+    Route::patch('update-cart', [ProductController::class, 'updateCart'])->name('update.cart');
+    Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
 
     /**User*/
     Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('users/edit/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::post('users/edit/{id}', [UserController::class, 'updateCart'])->name('user.update');
     Route::get('/profile/{id}', [UserController::class, 'showProfile'])->name('profile');
 
     Route::post('like', [ProductController::class, 'like'])->name('like');

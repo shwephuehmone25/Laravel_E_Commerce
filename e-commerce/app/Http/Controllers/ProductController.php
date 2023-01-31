@@ -215,11 +215,21 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function cart()
     {
         return view('cart');
     }
 
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function addToCart($id)
     {
         $product = Product::findOrFail($id);
@@ -241,6 +251,11 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function updateCart(Request $request)
     {
         if ($request->id && $request->quantity) {
@@ -251,6 +266,11 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function remove(Request $request)
     {
         if ($request->id) {

@@ -94,7 +94,7 @@
             </a>
             <a href="{{ route('cart.list') }}" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge text-dark">{{ Cart::getTotalQuantity()}}</span>
+                <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
             </a>
         </div>
     </div>
