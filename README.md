@@ -73,7 +73,7 @@ Create Google ID in following link:
 > https://console.cloud.google.com/apis/dashboard 
 <br>
 ### Database Migration
-Execute below command to create a migration table in the database as defined in your .env file
+Run database migrations:
 ```
 php artisan migrate
 ```
