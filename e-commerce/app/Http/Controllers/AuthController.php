@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Mail\VerifyMail;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,12 +15,12 @@ class AuthController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\RegisterRequest  $request
      * @return \Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
 
         $user = User::create([
