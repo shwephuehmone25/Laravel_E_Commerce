@@ -73,7 +73,7 @@ Create Google ID in following link:
 > https://console.cloud.google.com/apis/dashboard 
 <br>
 ### Database Migration
-```
+
 Run database migrations:
 ```
 php artisan migrate
@@ -94,3 +94,4 @@ Visit below url:
 ```
 http://localhost:8000
 ```
+
