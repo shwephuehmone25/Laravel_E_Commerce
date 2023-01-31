@@ -211,7 +211,7 @@
                                 </button>
                             </div>
                         </div>
-                        <button class="btn text-dark btn-info p-0">
+                        <button class="btn text-dark btn-info">
                             <a href="{{ route('add.to.cart', $product->id) }}">
                                 <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
                             </a>

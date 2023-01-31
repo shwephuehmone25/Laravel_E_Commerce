@@ -30,7 +30,7 @@
                                 <tr data-id="{{ $id }}">
                                     <td data-th="Product">
                                         <div class="row">
-                                            <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}"
+                                            <div class="col-sm-3 hidden-xs"><img src="{{ asset('storage/images/' . $details['image']) }}"
                                                     style="width: 50px;" class="img-responsive" /></div>
                                             <div class="col-sm-9">
                                                 <h4 class="nomargin">{{ $details['name'] }}</h4>
@@ -40,7 +40,7 @@
                                     <td data-th="Price">${{ $details['price'] }}</td>
                                     <td data-th="Quantity">
                                         <input type="number" value="{{ $details['quantity'] }}"
-                                            class="form-control quantity update-cart" />
+                                            class="form-control quantity update-cart" style="width:40%;"/>
                                     </td>
                                     <td data-th="Subtotal" class="text-center">
                                         ${{ $details['price'] * $details['quantity'] }}</td>
