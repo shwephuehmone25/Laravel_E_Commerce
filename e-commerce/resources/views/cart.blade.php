@@ -57,6 +57,7 @@
                             <td colspan="5" class="text-right">
                                 <a href="{{ url('/') }}" class="btn btn-secondary"><i class="fa fa-angle-left"></i>
                                     Continue Shopping</a>
+                                    <button class="btn btn-primary">Checkout</button>
                             </td>
                         </tr>
                     </tfoot>

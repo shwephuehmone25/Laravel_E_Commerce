@@ -241,12 +241,8 @@
                             <div class="col-6">
                                 <h5 class="font-weight-semi-bold m-0">{{ $product->name }}</h5>
                             </div>
-                            <div class="col-6">
-                                <a href="" class="btn btn-sm text-dark">
-                                    <i class="fas fa-heart text-primary"></i>
-                            </a> 
-                            </div>
                         </div>    
+                        @include('user.likeable', ['model' => $product])
                     </div>
                 </div>
             @endforeach
@@ -304,10 +300,8 @@
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm text-dark p-0">
                                 <i class="fas fa-eye text-primary mr-1"></i>View Detail
-                            </a>
-                            <a href="" class="btn btn-sm text-dark p-0">
-                                <i class="fas fa-heart text-primary"></i>
-                            </a>    
+                            </a>   
+                            @include('user.likeable', ['model' => $product])
                         </div>
                     </div>
                 </div>
@@ -357,12 +351,10 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm text-dark p-0">
+                        <a href="{{ route('product.show', $latestProduct->id) }}" class="btn btn-sm text-dark p-0">
                             <i class="fas fa-eye text-primary mr-1"></i>View Detail
                         </a>
-                        <a href="" class="btn btn-sm text-dark p-0">
-                            <i class="fas fa-heart text-primary"></i>
-                        </a> 
+                        @include('user.likeable', ['model' => $latestProduct])
                     </div>
                 </div>
             </div>
