@@ -14,9 +14,9 @@ class UserController extends Controller
      */
     public function showProfile($id)
     {
-        User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('user.profile');
+        return view('user.profile', compact('user'));
     }
 
     /**
@@ -49,7 +49,7 @@ class UserController extends Controller
             $user->image = $userImage;
         }
         $user->name = $request->name;
-        $user->bio = $request->bio;
+        $user->address = $request->address;
         $user->save();
 
         return view('user.profile')

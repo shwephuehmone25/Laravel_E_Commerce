@@ -20,9 +20,17 @@
 .text-primary {
     color: #d19c97 !important;
 }
+.saveBtn {
+    border-color: #d19c97;
+}
+
 .bg-secondary {
     background-color: #edf1ff !important;
 }
+.resetBtn {
+    border-color: #4d586f;
+}
+
 .font-weight-semi-bold {
     font-weight: 600;
     color: black;
