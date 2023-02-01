@@ -205,7 +205,7 @@
             @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 pb-1">
                     <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        @can('manage_products', $product)
+                        {{-- @can('manage_products', $product) --}}
                             <div class="dropdown">
                                 <button class="btn btn-white p-0 border-0" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -238,7 +238,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        @endcan
+                        {{-- @endcan --}}
                         <a href="" class="cat-img position-relative overflow-hidden mb-3">
                             <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
                                 alt="Product">

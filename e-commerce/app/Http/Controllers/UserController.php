@@ -8,6 +8,18 @@ use Illuminate\Support\Facades\Request;
 class UserController extends Controller
 {
     /**
+     * Summary of show user lists
+     * @param $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllUser()
+    {
+        $users = User::all();
+
+        return view('user.index');
+    }
+
+    /**
      * Display a listing of users.
      *
      * @return \Illuminate\Http\Response
