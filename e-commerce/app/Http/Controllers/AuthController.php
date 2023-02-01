@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Mail\VerifyMail;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+        $this->middleware('guest:admin');
+    }
     /**
      * Handle an incoming registration request.
      *
@@ -31,7 +36,7 @@ class AuthController extends Controller
         ]);
         $this->sendMail($user);
 
-        Auth::login($user);
+        //Auth::login($user);
 
         return redirect('login')->with('success', 'Registered Successfully');
     }
@@ -43,6 +48,21 @@ class AuthController extends Controller
         ];
 
         Mail::to('shwephue7889@gmail.com')->send(new VerifyMail($data));
+    }
+
+    public function showAdminRegisterForm()
+    {
+        return view('admin.auth.register');
+    }
+
+    protected function createAdmin(Request $request)
+    {
+        $admin = Admin::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('admin');
     }
 
     /**

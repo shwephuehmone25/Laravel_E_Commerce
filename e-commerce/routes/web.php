@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,11 +20,18 @@ use Illuminate\Support\Facades\Route;
  */
 
 Auth::routes();
-Route::group(['middleware' => ['auth']], function () {
+Route::middleware('auth:sanctum')->group(function () {
+    Route::resource('categories', CategoryController::class);
 
     Route::get('/', [ProductController::class, 'showAllProducts'])->name('lists');
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
+    Route::post('product/edit/{product}', [ProductController::class, 'update'])->name('product.update');
+    Route::get('product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
     Route::get('product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+    Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::get('category/{category_id}', [ProductController::class, 'relatedProducts'])->name('category.show');
+
     Route::get('cart', [ProductController::class, 'cart'])->name('cart.list');
     Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
     Route::patch('update-cart', [ProductController::class, 'updateCart'])->name('update.cart');
@@ -32,25 +39,24 @@ Route::group(['middleware' => ['auth']], function () {
 
     /**User*/
     Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('users/edit/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::post('users/edit/{id}', [UserController::class, 'updateCart'])->name('user.update');
     Route::get('/profile/{id}', [UserController::class, 'showProfile'])->name('profile');
 
     Route::post('like', [ProductController::class, 'like'])->name('like');
     Route::delete('like', [ProductController::class, 'unlike'])->name('unlike');
 
 });
-Route::middleware([IsAdmin::class])->group(function () {
-    Route::resource('categories', CategoryController::class);
 
-    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
-    Route::post('product/edit/{product}', [ProductController::class, 'update'])->name('product.update');
-    Route::get('product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
-    Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/user/show', [UserController::class, 'getAllUsers'])->name('user.lists');
-});
+Route::get('/admin/login', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
+Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
+
+Route::get('/admin/register', [AuthController::class, 'showAdminRegisterForm'])->name('admin.register-view');
+Route::post('/admin/register', [AuthController::class, 'createAdmin'])->name('admin.register');
+
+Route::get('/admin/dashboard', function () {
+
+    return view('admin.dashboard');
+})->middleware('auth:admin');
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
