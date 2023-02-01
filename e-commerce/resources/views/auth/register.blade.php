@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="wrapper">
         <div class="inner">
             <div class="image-holder">
@@ -35,7 +34,7 @@
                 <div class="form-holder">
                     
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
-                        placeholder="Your Email(example@gmail.com)" >
+                        placeholder="example@gmail.com" >
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">

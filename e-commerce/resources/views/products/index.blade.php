@@ -83,7 +83,13 @@
                                             <a href="{{route('cart.list')}}">Shopping Cart</a>
                                         </span>
                                     </button>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                    <button
+                                        class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
+                                        <i class="fa-solid fa-right-from-bracket text-primary"></i>
+                                        <span class="px-1">
+                                            <a href="checkout.html">Checkout</a>
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -406,12 +412,12 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{{asset('lib/easing/easing.min.js')}}"></script>
+    <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
 
     <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+    <script src="{{asset('mail/jqBootstrapValidation.min.js')}}"></script>
+    <script src="{{asset('mail/contact.js')}}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
