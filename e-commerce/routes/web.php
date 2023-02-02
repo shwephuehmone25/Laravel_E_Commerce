@@ -46,12 +46,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('like', [ProductController::class, 'unlike'])->name('unlike');
 
 });
-
+/**Admin Routes*/
 Route::get('/admin/login', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
 Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
 
 Route::get('/admin/register', [AuthController::class, 'showAdminRegisterForm'])->name('admin.register-view');
 Route::post('/admin/register', [AuthController::class, 'createAdmin'])->name('admin.register');
+Route::get('user/lists/show', [UserController::class, 'getAllUser'])->name('user.lists');
+Route::get('/export/users', [UserController::class, 'exportUsers'])->name('users.export');
 
 Route::get('/admin/dashboard', function () {
 
