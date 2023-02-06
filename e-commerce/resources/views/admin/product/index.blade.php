@@ -34,20 +34,29 @@
                             <thead class="bg-mute text-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>User</th>
+                                    <th>Product Name</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Image</th>
                                     <th style="width: 30%;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($products as $p)
                                 <tr>
-                                    <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <td>{{$p->id}}</td>
+                                    <td>{{$p->user->name}}</td>
+                                    <td>{{$p->name}}</td>
+                                    <td>{{$p->description}}</td>
+                                    <td>{{$p->price}}</td>
+                                    <td>
+                                        <img src="{{ asset('storage/images/' . $p->image) }}"
+                                        alt="Product" width="50%" height="50%">    
+                                    </td>
                                     <td>
                                         <button class="btn btn-success btn-sm editBtn">
-                                            <a href="{{route('user.update',$user->id)}}">
+                                            {{-- <a href="{{route('p.update',$p->id)}}"> --}}
                                             <i class="fa-solid fa-pen text-white"></i>
                                             Edit
                                         </a>

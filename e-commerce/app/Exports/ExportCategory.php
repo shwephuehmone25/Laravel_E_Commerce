@@ -2,13 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\User;
+use App\Models\Category;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ExportUser implements FromCollection, WithHeadings, ShouldAutoSize
+class ExportCategory implements FromCollection, WithHeadings, ShouldAutoSize
 {
     use Exportable;
     /**
@@ -17,7 +17,7 @@ class ExportUser implements FromCollection, WithHeadings, ShouldAutoSize
     public function collection()
     {
 
-        return User::select('id', 'name', 'email')->get();
+        return Category::select('id', 'name')->get();
     }
 
     public function headings(): array
@@ -26,7 +26,6 @@ class ExportUser implements FromCollection, WithHeadings, ShouldAutoSize
         return [
             'id',
             'name',
-            'email',
         ];
     }
 }

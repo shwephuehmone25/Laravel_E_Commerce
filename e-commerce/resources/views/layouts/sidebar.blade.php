@@ -50,15 +50,29 @@
             <i class="fa-brands fa-product-hunt"></i>
             <span>Product Management</span>
         </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="{{route('products.lists')}}">Product Lists</a>
+                <a class="collapse-item" href="#">Add Product</a>
+            </div>
+        </div>
     </li>
 
     <!-- Nav Item - Category Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory"
+            aria-expanded="true" aria-controls="collapseCategory">
             <i class="fa-solid fa-cross"></i>
             <span>Category Management</span>
         </a>
+        <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="{{route('category.lists')}}">Category Lists</a>
+                <a class="collapse-item" href="#">Create Users</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

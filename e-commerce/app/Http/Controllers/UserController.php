@@ -2,24 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\ExportUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
-    /**
-     * Summary of show user lists
-     * @param $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getAllUser()
-    {
-        $users = User::all();
-
-        return view('user.index', compact('users'));
-    }
 
     public function create()
     {
@@ -75,10 +62,4 @@ class UserController extends Controller
         return view('user.profile')
             ->with("info", "User Info changed successfully!");
     }
-
-    public function exportUsers(Request $request)
-    {
-        return Excel::download(new ExportUser, 'users.xlsx');
-    }
-
 }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
@@ -53,11 +56,14 @@ Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin
 
 Route::get('/admin/register', [AuthController::class, 'showAdminRegisterForm'])->name('admin.register-view');
 Route::post('/admin/register', [AuthController::class, 'createAdmin'])->name('admin.register');
-Route::get('user/lists/show', [UserController::class, 'getAllUser'])->name('user.lists');
-Route::get('/export/users', [UserController::class, 'exportUsers'])->name('users.export');
+Route::get('user/lists/show', [AdminUserController::class, 'getAllUser'])->name('user.lists');
+Route::get('/export/users', [AdminUserController::class, 'exportUsers'])->name('users.export');
+Route::post('import/users', [AdminUserController::class, 'importUser'])->name('users.import');
 Route::get('user/edit/{id}', [UserController::class, 'create'])->name('user.edit');
 Route::post('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
-Route::get('category/lists/show', [CategoryController::class, 'getAllCategory'])->name('category.lists');
+Route::get('category/lists/show', [AdminCategoryController::class, 'getAllCategory'])->name('category.lists');
+Route::get('/export/categories', [AdminCategoryController::class, 'exportCategory'])->name('categories.export');
+Route::get('product/lists/show', [AdminProductController::class, 'getAllProducts'])->name('products.lists');
 
 Route::get('/admin/dashboard', function () {
 
