@@ -20,6 +20,14 @@
         $(window).resize(toggleNavbarMethod);
     });
 
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $("#import-btn").click(function () {
+                $("#importCategory").click();
+            });
+        });
+    });
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {

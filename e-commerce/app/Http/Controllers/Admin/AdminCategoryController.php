@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exports\ExportCategory;
 use App\Http\Controllers\Controller;
+use App\Imports\ImportCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -25,5 +26,15 @@ class AdminCategoryController extends Controller
     public function exportCategory(Request $request)
     {
         return Excel::download(new ExportCategory, 'categories.xlsx');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function importCategory()
+    {
+        Excel::import(new ImportCategory, request()->file('cat_file'));
+
+        return back();
     }
 }

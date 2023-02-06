@@ -36,9 +36,14 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="{{route('user.lists')}}">User Lists</a>
-                <a class="collapse-item" href="#">Create Users</a>
+                <h6 class="collapse-header">User:</h6>
+                <a class="collapse-item" href="{{route('user.lists')}}">
+                    <i class="fa-solid fa-user-group"></i>
+                User Lists
+                </a>
+                <a class="collapse-item" href="{{route('user.create')}}">
+                    <i class="fa-solid fa-square-plus mr-1"></i> Create Users
+                </a>
             </div>
         </div>
     </li>
@@ -52,9 +57,9 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="{{route('products.lists')}}">Product Lists</a>
-                <a class="collapse-item" href="#">Add Product</a>
+                <h6 class="collapse-header">Product:</h6>
+                <a class="collapse-item" href="{{route('products.lists')}}"><i class="fa-solid fa-layer-group mr-1"></i>Product Lists</a>
+                <a class="collapse-item" href="#"><i class="fa-solid fa-square-plus mr-1"></i>Add Product</a>
             </div>
         </div>
     </li>
@@ -68,9 +73,9 @@
         </a>
         <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="{{route('category.lists')}}">Category Lists</a>
-                <a class="collapse-item" href="#">Create Users</a>
+                <h6 class="collapse-header">Category:</h6>
+                <a class="collapse-item" href="{{route('category.lists')}}"><i class="fa-solid fa-list mr-1"></i>Category Lists</a>
+                <a class="collapse-item" href="#"><i class="fa-solid fa-square-plus mr-1"></i>Create Category</a>
             </div>
         </div>
     </li>

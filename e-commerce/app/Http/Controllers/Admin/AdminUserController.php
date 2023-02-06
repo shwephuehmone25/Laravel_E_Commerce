@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exports\ExportUser;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserStoreRequest;
 use App\Imports\ImportUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,9 +19,40 @@ class AdminUserController extends Controller
      */
     public function getAllUser()
     {
-        $users = User::all();
+        $users = User::orderBy('id', 'desc')->get();
 
         return view('admin.user.index', compact('users'));
+    }
+
+    /**
+     * Show the form for creating the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+
+        return view('admin.user.create');
+    }
+
+    /**
+     * Store a newly created users in storage.
+     *
+     * @param  \Illuminate\Http\UserStoreRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(UserStoreRequest $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        $users = User::orderBy('id', 'desc')->get();
+
+        return view('admin.user.index', compact('user', 'users'));
     }
 
     /**
@@ -40,5 +72,4 @@ class AdminUserController extends Controller
 
         return back();
     }
-
 }

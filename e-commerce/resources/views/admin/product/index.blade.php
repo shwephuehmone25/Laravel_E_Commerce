@@ -33,9 +33,9 @@
                         <table class="table table-striped">
                             <thead class="bg-mute text-dark">
                                 <tr>
-                                    <th>ID</th>
+                                    <th>#</th>
                                     <th>User</th>
-                                    <th>Product Name</th>
+                                    <th>Name</th>
                                     <th>Description</th>
                                     <th>Price</th>
                                     <th>Image</th>
