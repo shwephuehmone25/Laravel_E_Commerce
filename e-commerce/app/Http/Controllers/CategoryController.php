@@ -19,6 +19,18 @@ class CategoryController extends Controller
     }
 
     /**
+     * Summary of show category lists
+     * @param $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllCategory()
+    {
+        $category = Category::all();
+
+        return view('category.index', compact('category'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

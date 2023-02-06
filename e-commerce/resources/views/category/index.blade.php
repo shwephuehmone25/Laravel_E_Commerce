@@ -35,19 +35,17 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Email</th>
                                     <th style="width: 30%;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($category as $c)
                                 <tr>
-                                    <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <td>{{$c->id}}</td>
+                                    <td>{{$c->name}}</td>
                                     <td>
                                         <button class="btn btn-success btn-sm editBtn">
-                                            <a href="{{route('user.update',$user->id)}}">
+                                            {{-- <a href="{{route('catego.update',$user->id)}}"> --}}
                                             <i class="fa-solid fa-pen text-white"></i>
                                             Edit
                                         </a>

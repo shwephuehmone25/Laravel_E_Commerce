@@ -21,6 +21,11 @@ class UserController extends Controller
         return view('user.index', compact('users'));
     }
 
+    public function create()
+    {
+        return view('user.create');
+    }
+
     /**
      * Display a listing of users.
      *
@@ -41,6 +46,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $user = User::findOrFail($id);
 
         return view('user.profile');
     }

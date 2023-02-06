@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::middleware('auth:sanctum')->group(function () {
     Route::resource('categories', CategoryController::class);
-
+    /**Product Route*/
     Route::get('/', [ProductController::class, 'showAllProducts'])->name('lists');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/create', [ProductController::class, 'store'])->name('product.store');
@@ -37,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('update-cart', [ProductController::class, 'updateCart'])->name('update.cart');
     Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
 
-    /**User*/
+    /**User Route*/
     Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('users/edit/{id}', [UserController::class, 'updateCart'])->name('user.update');
     Route::get('/profile/{id}', [UserController::class, 'showProfile'])->name('profile');
@@ -54,6 +55,9 @@ Route::get('/admin/register', [AuthController::class, 'showAdminRegisterForm'])-
 Route::post('/admin/register', [AuthController::class, 'createAdmin'])->name('admin.register');
 Route::get('user/lists/show', [UserController::class, 'getAllUser'])->name('user.lists');
 Route::get('/export/users', [UserController::class, 'exportUsers'])->name('users.export');
+Route::get('user/edit/{id}', [UserController::class, 'create'])->name('user.edit');
+Route::post('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
+Route::get('category/lists/show', [CategoryController::class, 'getAllCategory'])->name('category.lists');
 
 Route::get('/admin/dashboard', function () {
 
