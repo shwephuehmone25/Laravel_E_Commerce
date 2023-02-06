@@ -24,15 +24,16 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <form action="{{ route('users.import') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="file" class="form-control">
+                            <br>
+                            <button class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">Import User</button>
+                        </form>
                         <a href="{{ route('users.export') }}"
                             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                                <form action="{{ route('users.import') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="file" name="file" class="form-control">
-                                    <br>
-                                    <button class="btn btn-success">Import User</button>
-                                </form>
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report
+                        </a>            
                     </div>
 
                     <!-- Content Row -->
@@ -40,7 +41,7 @@
                         <table class="table table-striped">
                             <thead class="bg-mute text-dark">
                                 <tr>
-                                    <th>ID</th>
+                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th style="width: 30%;">Actions</th>

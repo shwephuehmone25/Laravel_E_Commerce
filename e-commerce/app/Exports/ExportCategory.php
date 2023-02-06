@@ -17,7 +17,7 @@ class ExportCategory implements FromCollection, WithHeadings, ShouldAutoSize
     public function collection()
     {
 
-        return Category::select('id', 'name')->get();
+        return Category::select('id', 'name', 'created_at', 'updated_at')->get();
     }
 
     public function headings(): array
@@ -26,6 +26,8 @@ class ExportCategory implements FromCollection, WithHeadings, ShouldAutoSize
         return [
             'id',
             'name',
+            'created_at',
+            'updated_at',
         ];
     }
 }

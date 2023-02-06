@@ -57,12 +57,15 @@ Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin
 Route::get('/admin/register', [AuthController::class, 'showAdminRegisterForm'])->name('admin.register-view');
 Route::post('/admin/register', [AuthController::class, 'createAdmin'])->name('admin.register');
 Route::get('user/lists/show', [AdminUserController::class, 'getAllUser'])->name('user.lists');
+Route::get('/user/create', [AdminUserController::class, 'create'])->name('user.create');
+Route::post('/user/create', [AdminUserController::class, 'store'])->name('user.store');
 Route::get('/export/users', [AdminUserController::class, 'exportUsers'])->name('users.export');
 Route::post('import/users', [AdminUserController::class, 'importUser'])->name('users.import');
 Route::get('user/edit/{id}', [UserController::class, 'create'])->name('user.edit');
 Route::post('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
 Route::get('category/lists/show', [AdminCategoryController::class, 'getAllCategory'])->name('category.lists');
 Route::get('/export/categories', [AdminCategoryController::class, 'exportCategory'])->name('categories.export');
+Route::post('import/categories', [AdminCategoryController::class, 'importCategory'])->name('categories.import');
 Route::get('product/lists/show', [AdminProductController::class, 'getAllProducts'])->name('products.lists');
 
 Route::get('/admin/dashboard', function () {

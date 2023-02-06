@@ -2,16 +2,21 @@
 
 namespace App\Imports;
 
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use App\Models\Category;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ImportCategory implements ToCollection
+class ImportCategory implements ToModel, WithHeadingRow
 {
     /**
-    * @param Collection $collection
-    */
-    public function collection(Collection $collection)
+     * @param Collection $collection
+     */
+    public function model(array $row)
     {
-        //
+        return new Category([
+            'name' => $row['name'],
+            'created_at' => $row['created_at'],
+            'updated_at' => $row['updated_at'],
+        ]);
     }
 }

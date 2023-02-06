@@ -22,10 +22,25 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="{{route('categories.export')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        </div>
+                        <div class="col-3">
+                            <form action="{{ route('categories.import') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="cat_file" class="form-control mb-1">
+                                <button class="d-none d-sm-inline-block btn btn-sm shadow-sm btn-success" id="import-btn">
+                                    <i class="fa-solid fa-file-import text-white-50"></i>
+                                    Import Category
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-3">
+                            <a href="{{ route('categories.export') }}"
+                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fas fa-download fa-sm text-white-50"></i>Generate Category</a>
+                        </div>
                     </div>
 
                     <!-- Content Row -->
@@ -33,32 +48,36 @@
                         <table class="table table-striped">
                             <thead class="bg-mute text-dark">
                                 <tr>
-                                    <th>ID</th>
+                                    <th>#</th>
                                     <th>Name</th>
+                                    <th>Created_at</th>
+                                    <th>Updated_at</th>
                                     <th style="width: 30%;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($category as $c)
-                                <tr>
-                                    <td>{{$c->id}}</td>
-                                    <td>{{$c->name}}</td>
-                                    <td>
-                                        <button class="btn btn-success btn-sm editBtn">
-                                            {{-- <a href="{{route('catego.update',$user->id)}}"> --}}
-                                            <i class="fa-solid fa-pen text-white"></i>
-                                            Edit
-                                        </a>
-                                        </button>
-                                        <button class="btn btn-danger btn-sm">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $c->id }}</td>
+                                        <td>{{ $c->name }}</td>
+                                        <td>{{ $c->created_at->toFormattedDateString() }}</td>
+                                        <td>{{ $c->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            <button class="btn btn-success btn-sm editBtn">
+                                                {{-- <a href="{{route('catego.update',$user->id)}}"> --}}
+                                                <i class="fa-solid fa-pen text-white"></i>
+                                                Edit
+                                                </a>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
-                          </table>       
+                        </table>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -70,7 +89,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; E-Shopper 2023</span>
                     </div>
                 </div>
             </footer>
@@ -107,4 +126,3 @@
         </div>
     </div>
 @endsection
-   
