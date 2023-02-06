@@ -112,9 +112,10 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('chart')}}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Charts</span>
+        </a>
     </li>
 
     <!-- Nav Item - Tables -->

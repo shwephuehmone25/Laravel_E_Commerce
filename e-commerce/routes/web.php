@@ -63,6 +63,8 @@ Route::get('/export/users', [AdminUserController::class, 'exportUsers'])->name('
 Route::post('import/users', [AdminUserController::class, 'importUser'])->name('users.import');
 Route::get('user/edit/{id}', [UserController::class, 'create'])->name('user.edit');
 Route::post('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
+
+Route::get('user/chart', [AdminUserController::class, 'getAllUserByChart'])->name('chart');
 Route::get('category/lists/show', [AdminCategoryController::class, 'getAllCategory'])->name('category.lists');
 Route::get('/export/categories', [AdminCategoryController::class, 'exportCategory'])->name('categories.export');
 Route::post('import/categories', [AdminCategoryController::class, 'importCategory'])->name('categories.import');
