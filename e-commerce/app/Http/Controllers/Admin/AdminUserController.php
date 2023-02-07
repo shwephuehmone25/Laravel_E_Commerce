@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserStoreRequest;
 use App\Imports\ImportUser;
 use App\Models\User;
+use DB;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -52,7 +53,7 @@ class AdminUserController extends Controller
 
         $users = User::orderBy('id', 'desc')->get();
 
-        return view('admin.user.index', compact('user', 'users'));
+        return view('admin.user.index', compact('user', 'users'))->with('message', 'Data added Successfully');
     }
 
     /**
@@ -60,6 +61,7 @@ class AdminUserController extends Controller
      */
     public function exportUsers(Request $request)
     {
+
         return Excel::download(new ExportUser, 'users.xlsx');
     }
 
@@ -71,5 +73,25 @@ class AdminUserController extends Controller
         Excel::import(new ImportUser, request()->file('file'));
 
         return back();
+    }
+
+    /**
+     * Summary of show user lists
+     * @param $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllUserByChart()
+    {
+        $users = User::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->orderBy('created_at')
+            ->pluck('count', 'month_name');
+
+        $labels = $users->keys();
+        $data = $users->values();
+
+        return view('admin.chart', compact('labels', 'data'));
+
     }
 }

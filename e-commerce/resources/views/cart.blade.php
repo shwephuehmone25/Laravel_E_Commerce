@@ -33,7 +33,7 @@
                                             <div class="col-sm-3 hidden-xs"><img src="{{ asset('storage/images/' . $details['image']) }}"
                                                     style="width: 50px;" class="img-responsive" /></div>
                                             <div class="col-sm-9">
-                                                <h4 class="nomargin">{{ $details['name'] }}</h4>
+                                                <h4 class="nomargin text-capitalize">{{ $details['name'] }}</h4>
                                             </div>
                                         </div>
                                     </td>
@@ -55,7 +55,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="5" class="text-right">
-                                <a href="{{ url('/') }}" class="btn btn-secondary"><i class="fa fa-angle-left"></i>
+                                <a href="{{route('lists')}}" class="btn btn-secondary"><i class="fa fa-angle-left"></i>
                                     Continue Shopping</a>
                                     <button class="btn btn-primary">Checkout</button>
                             </td>

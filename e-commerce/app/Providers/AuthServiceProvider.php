@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\Likeable;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -28,10 +29,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Gate::define('manage_products', function (User $user, Product $product) {
+        Gate::define('manage_products', function (User $user, Product $product) {
 
-        //     return $product->user_id == $user->id;
-        // });
+            return $product->user_id == $user->id;
+        });
 
         Gate::define('like', function (User $user, Likeable $likeable) {
             if (!$likeable->exists) {
