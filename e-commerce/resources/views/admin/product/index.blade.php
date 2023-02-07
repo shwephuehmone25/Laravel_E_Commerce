@@ -55,16 +55,21 @@
                                         alt="Product" width="50%" height="50%">    
                                     </td>
                                     <td>
+                                        <form action="{{route('product.remove',$p->id)}}" method="Post"
+                                            onsubmit="return confirm('{{ trans('Are You Sure ? ') }}');">
                                         <button class="btn btn-success btn-sm editBtn">
-                                            {{-- <a href="{{route('p.update',$p->id)}}"> --}}
+                                            <a href="{{route('update.product',$p->id)}}">
                                             <i class="fa-solid fa-pen text-white"></i>
                                             Edit
                                         </a>
                                         </button>
+                                         @csrf
+                                            @method('DELETE')
                                         <button class="btn btn-danger btn-sm">
                                             <i class="fa-solid fa-trash-can"></i>
                                             Delete
                                         </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -81,7 +86,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; E-Shopper 2023</span>
                     </div>
                 </div>
             </footer>

@@ -53,7 +53,37 @@ class AdminUserController extends Controller
 
         $users = User::orderBy('id', 'desc')->get();
 
-        return view('admin.user.index', compact('user', 'users'))->with('message', 'Data added Successfully');
+        return view('admin.user.index', compact('user', 'users'))->with('success', 'User is added successfully');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('admin.user.edit', compact('user'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
+    {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->status = $request->status;
+        $user->save();
+
+        return redirect()->route('user.lists')->with('info', 'A user updated successfully');
     }
 
     /**
@@ -92,6 +122,18 @@ class AdminUserController extends Controller
         $data = $users->values();
 
         return view('admin.chart', compact('labels', 'data'));
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\User  $User
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('user.lists')->with('success', 'User has been deleted successfully');
     }
 }

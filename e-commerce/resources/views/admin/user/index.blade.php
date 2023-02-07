@@ -1,5 +1,6 @@
 @extends('layouts.adminlayout')
 
+@include('partials.alert')
 @section('dashboard')
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -44,6 +45,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Status</th>
                                     <th style="width: 30%;">Actions</th>
                                 </tr>
                             </thead>
@@ -53,17 +55,23 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->status }}</td>
                                         <td>
+                                            <form action="{{ route('user.destroy',$user->id) }}" method="Post"
+                                                onsubmit="return confirm('{{ trans('Are You Sure ? ') }}');">
                                             <button class="btn btn-success btn-sm editBtn">
                                                 <a href="{{ route('user.update', $user->id) }}">
                                                     <i class="fa-solid fa-pen text-white"></i>
                                                     Edit
                                                 </a>
                                             </button>
+                                            @csrf
+                                            @method('DELETE')
                                             <button class="btn btn-danger btn-sm">
                                                 <i class="fa-solid fa-trash-can"></i>
                                                 Delete
                                             </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

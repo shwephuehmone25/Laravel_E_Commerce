@@ -3,6 +3,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
 
 @section('content')
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="content">
         <div class="container">
             <div class="row">
@@ -50,15 +55,16 @@
 
                                 <div class="d-flex mb-5 align-items-center">
                                     <label class="control control--checkbox mb-0"><span class="caption">
-                                        {{ __('Remember Me') }}
-                                    </span>
+                                            {{ __('Remember Me') }}
+                                        </span>
                                         <input type="checkbox" checked="checked" />
                                         <div class="control__indicator"></div>
                                     </label>
                                     @if (Route::has('password.request'))
-                                    <span class="ml-auto"><a href="{{ route('password.request') }}" class="forgot-pass">{{ __('Forgot Your Password?') }}
-                                    </a>
-                                </span>
+                                        <span class="ml-auto"><a href="{{ route('password.request') }}"
+                                                class="forgot-pass">{{ __('Forgot Your Password?') }}
+                                            </a>
+                                        </span>
                                     @endif
                                 </div>
 

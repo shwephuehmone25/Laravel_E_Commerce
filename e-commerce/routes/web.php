@@ -61,14 +61,19 @@ Route::get('/user/create', [AdminUserController::class, 'create'])->name('user.c
 Route::post('/user/create', [AdminUserController::class, 'store'])->name('user.store');
 Route::get('/export/users', [AdminUserController::class, 'exportUsers'])->name('users.export');
 Route::post('import/users', [AdminUserController::class, 'importUser'])->name('users.import');
-Route::get('user/edit/{id}', [UserController::class, 'create'])->name('user.edit');
-Route::post('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
-
+Route::get('user/edit/{id}', [AdminUserController::class, 'edit'])->name('user.edit');
+Route::post('user/edit/{user}', [AdminUserController::class, 'update'])->name('user.update');
+Route::delete('/user/{user}', [AdminUserController::class, 'destroy'])->name('user.destroy');
 Route::get('user/chart', [AdminUserController::class, 'getAllUserByChart'])->name('chart');
+
 Route::get('category/lists/show', [AdminCategoryController::class, 'getAllCategory'])->name('category.lists');
 Route::get('/export/categories', [AdminCategoryController::class, 'exportCategory'])->name('categories.export');
 Route::post('import/categories', [AdminCategoryController::class, 'importCategory'])->name('categories.import');
+
 Route::get('product/lists/show', [AdminProductController::class, 'getAllProducts'])->name('products.lists');
+Route::get('product/edit/{product}', [AdminProductController::class, 'edit'])->name('product.edit');
+Route::post('product/edit/{product}', [AdminProductController::class, 'update'])->name('update.product');
+Route::delete('/product/{product}', [AdminProductController::class, 'destroy'])->name('product.remove');
 
 Route::get('/admin/dashboard', function () {
 
