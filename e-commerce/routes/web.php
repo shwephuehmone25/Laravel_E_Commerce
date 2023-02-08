@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('like', [ProductController::class, 'like'])->name('like');
     Route::delete('like', [ProductController::class, 'unlike'])->name('unlike');
+
+    Route::controller(ImageController::class)->group(function () {
+        Route::get('image-upload', 'index');
+        Route::post('image-upload', 'store')->name('image.store');
+    });
 
 });
 /**Admin Routes*/

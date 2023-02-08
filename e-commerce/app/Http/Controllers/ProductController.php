@@ -8,6 +8,7 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Requests\UnlikeRequest;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -72,14 +73,27 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(storage_path('app/public/images'), $imageName);
+        // $imageName = time() . '.' . $request->image->extension();
+        // $request->image->move(storage_path('app/public/images'), $imageName);
+        $images = [];
+        if ($request->images) {
+            foreach ($request->images as $key => $image) {
+                $imageName = time() . rand(1, 99) . '.' . $request->image->extension();
+                $image->move(storage_path('app/public/images'), $imageName);
+
+                $images[]['url'] = $imageName;
+            }
+        }
+
+        foreach ($images as $key => $image) {
+            Image::create($image);
+        }
         $product = Product::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $imageName,
+            //'image' => $imageName,
         ]);
         $product->categories()->sync($request->category);
 
