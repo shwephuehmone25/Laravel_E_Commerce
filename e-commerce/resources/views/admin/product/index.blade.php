@@ -48,7 +48,7 @@
                                     <td>{{$p->id}}</td>
                                     <td>{{$p->user->name}}</td>
                                     <td>{{$p->name}}</td>
-                                    <td>{{$p->description}}</td>
+                                    <td>{!!$p->description!!}</td>
                                     <td>{{$p->price}}</td>
                                     <td>
                                         <img src="{{ asset('storage/images/' . $p->image) }}"

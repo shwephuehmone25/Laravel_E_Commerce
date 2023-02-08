@@ -130,8 +130,9 @@ class ProductController extends Controller
     {
 
         if ($request->file('image')) {
-            if (File::exists(storage_path('app/public/images/') . $product->image)) {
-                File::delete(storage_path('app/public/images/') . $product->image);
+            if (file_exists('app/public/images/')) {
+                unlink('app/public/images/' . $product->image);
+                //File::delete(storage_path('app/public/images/') . $product->image);
             }
 
             $imageName = time() . '.' . $request->file('image')->extension();

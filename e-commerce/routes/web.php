@@ -51,11 +51,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
 });
 /**Admin Routes*/
-Route::get('/admin/login', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
-Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
-
+Route::get('/admin', [LoginController::class, 'showAdminLoginForm'])->name('admin.login-view');
+Route::post('/admin', [LoginController::class, 'adminLogin'])->name('admin.login');
 Route::get('/admin/register', [AuthController::class, 'showAdminRegisterForm'])->name('admin.register-view');
 Route::post('/admin/register', [AuthController::class, 'createAdmin'])->name('admin.register');
+
 Route::get('user/lists/show', [AdminUserController::class, 'getAllUser'])->name('user.lists');
 Route::get('/user/create', [AdminUserController::class, 'create'])->name('user.create');
 Route::post('/user/create', [AdminUserController::class, 'store'])->name('user.store');
@@ -78,7 +78,7 @@ Route::delete('/product/{product}', [AdminProductController::class, 'destroy'])-
 Route::get('/admin/dashboard', function () {
 
     return view('admin.dashboard');
-})->middleware('auth:admin');
+})->name('admin.dashboard')->middleware('auth:admin');
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);

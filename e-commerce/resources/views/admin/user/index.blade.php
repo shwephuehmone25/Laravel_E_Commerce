@@ -1,6 +1,5 @@
 @extends('layouts.adminlayout')
 
-@include('partials.alert')
 @section('dashboard')
     <!-- Page Wrapper -->
     <div id="wrapper">

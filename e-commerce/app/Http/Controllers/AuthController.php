@@ -7,6 +7,7 @@ use App\Mail\VerifyMail;
 use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -32,11 +33,10 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'bio' => $request->bio,
         ]);
         $this->sendMail($user);
 
-        //Auth::login($user);
+        Auth::login($user);
 
         return redirect('login')->with('success', 'Registered Successfully');
     }
@@ -44,7 +44,7 @@ class AuthController extends Controller
     public function sendMail()
     {
         $data = [
-            'title' => 'Mail from Medium.com',
+            'title' => 'Mail from E-Shopper',
         ];
 
         Mail::to('shwephue7889@gmail.com')->send(new VerifyMail($data));
@@ -52,17 +52,19 @@ class AuthController extends Controller
 
     public function showAdminRegisterForm()
     {
+
         return view('admin.auth.register');
     }
 
-    protected function createAdmin(Request $request)
+    protected function createAdmin(RegisterRequest $request)
     {
         $admin = Admin::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect()->intended('admin');
+
+        return redirect('admin')->with('success', 'Registered Successfully');
     }
 
     /**
