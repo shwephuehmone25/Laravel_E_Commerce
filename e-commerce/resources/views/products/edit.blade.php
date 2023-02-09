@@ -77,6 +77,15 @@
                     @enderror
 
                     <div class="d-flex flex-column mb-3">
+                        <input type="text" id="sizes" name="sizes"
+                            class="rounded form-control border border-1 px-3 py-2 "
+                            value="{{ old('sizes', $product->sizes) }}" />
+                        @error('sizes')
+                            <small class="text-danger">*{{ $message }}</small>
+                        @enderror
+                    </div>
+
+                    <div class="d-flex flex-column mb-3">
                         <input type="text" id="price" name="price"
                             class="rounded form-control border border-1 px-3 py-2 "
                             value="{{ old('price', $product->price) }}" />

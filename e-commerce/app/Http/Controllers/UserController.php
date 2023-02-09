@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 class UserController extends Controller
@@ -31,11 +32,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
+        if ($user->id != Auth::id()) {
+            return redirect()->back();
+        }
 
-        return view('user.profile');
+        return view('user.profile', compact('user'));
     }
 
     /**

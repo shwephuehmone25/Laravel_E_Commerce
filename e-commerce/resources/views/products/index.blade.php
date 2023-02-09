@@ -64,7 +64,8 @@
                                     <button
                                         class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
                                         <i class="fas fa-user text-primary"></i>
-                                        <span class="px-1"><a href="{{route('profile',Auth::user()->id)}}">{{ __('Profile') }}</a></span>
+                                        <span class="px-1"><a
+                                                href="{{ route('profile', Auth::user()->id) }}">{{ __('Profile') }}</a></span>
                                     </button>
                                     <button
                                         class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
@@ -80,7 +81,7 @@
                                         class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
                                         <i class="fas fa-shopping-cart text-primary"></i>
                                         <span class="px-1">
-                                            <a href="{{route('cart.list')}}">Shopping Cart</a>
+                                            <a href="{{ route('cart.list') }}">Shopping Cart</a>
                                         </span>
                                     </button>
                                     <button
@@ -240,14 +241,21 @@
                             </div>
                         @endcan
                         <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                            <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
-                                alt="Product">
+                            @if ($product->images->isEmpty())
+                                <img src="{{ asset('img/cat-4.jpg') }}" class="img-fluid w-100"
+                                    alt="Product Image">
+                            @else
+                                @foreach ($product->images as $image)
+                                    <img class="img-fluid" src="{{ asset('storage/images/' . $image->name) }}"
+                                        alt="Product Image">
+                                @endforeach
+                            @endif
                         </a>
                         <div class="row">
                             <div class="col-6">
-                                <h5 class="font-weight-semi-bold m-0">{{ $product->name }}</h5>
+                                <h5 class="font-weight-semi-bold m-0 text-capitalize">{{ $product->name }}</h5>
                             </div>
-                        </div>    
+                        </div>
                         @include('user.likeable', ['model' => $product])
                     </div>
                 </div>
@@ -286,7 +294,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">{{__('Trendy Products')}}</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">{{ __('Trendy Products') }}</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             @foreach ($products as $product)
@@ -294,10 +302,18 @@
                     <div class="card product-item border-0 mb-4">
                         <div
                             class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="{{ asset('storage/images/' . $product->image) }}" alt="">
+                            @if ($product->images->isEmpty())
+                                <img src="{{ asset('img/cat-4.jpg') }}" class="img-fluid w-100"
+                                    alt="Product Image">
+                            @else
+                                @foreach ($product->images as $image)
+                                    <img class="img-fluid w-100" src="{{ asset('storage/images/' . $image->name) }}"
+                                        alt="Product Image">
+                                @endforeach
+                            @endif
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">{{ $product->name }}</h6>
+                            <h6 class="text-truncate mb-3 text-capitalize">{{ $product->name }}</h6>
                             <div class="d-flex justify-content-center">
                                 <h6>${{ $product->price }}</h6>
                                 <h6 class="text-muted ml-2"><del>${{ $product->price }}</del></h6>
@@ -305,8 +321,8 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
                             <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm text-dark p-0">
-                                <i class="fas fa-eye text-primary mr-1"></i>{{__('View Detail')}}
-                            </a>   
+                                <i class="fas fa-eye text-primary mr-1"></i>{{ __('View Detail') }}
+                            </a>
                             @include('user.likeable', ['model' => $product])
                         </div>
                     </div>
@@ -341,29 +357,39 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2">{{__('Just Arrived')}}</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">{{ __('Just Arrived') }}</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             @foreach ($latest as $latestProduct)
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="{{ asset('storage/images/' . $latestProduct->image) }}" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">{{$latestProduct->name}}</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>${{$latestProduct->price}}</h6><h6 class="text-muted ml-2"><del>${{$latestProduct->price}}</del></h6>
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="card product-item border-0 mb-4">
+                        <div
+                            class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            @if ($product->images->isEmpty())
+                                <img src="{{ asset('img/cat-4.jpg') }}" class="img-fluid w-100" alt="Product Image">
+                            @else
+                                @foreach ($product->images as $image)
+                                    <img class="img-fluid" src="{{ asset('storage/images/' . $image->name) }}"
+                                        alt="Product Image">
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                            <h6 class="text-truncate mb-3 text-capitalize">{{ $latestProduct->name }}</h6>
+                            <div class="d-flex justify-content-center">
+                                <h6>${{ $latestProduct->price }}</h6>
+                                <h6 class="text-muted ml-2"><del>${{ $latestProduct->price }}</del></h6>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            <a href="{{ route('product.show', $latestProduct->id) }}"
+                                class="btn btn-sm text-dark p-0">
+                                <i class="fas fa-eye text-primary mr-1"></i>{{ __('View Detail') }}
+                            </a>
+                            @include('user.likeable', ['model' => $latestProduct])
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="{{ route('product.show', $latestProduct->id) }}" class="btn btn-sm text-dark p-0">
-                            <i class="fas fa-eye text-primary mr-1"></i>{{__('View Detail')}}
-                        </a>
-                        @include('user.likeable', ['model' => $latestProduct])
-                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
@@ -412,12 +438,12 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('lib/easing/easing.min.js')}}"></script>
-    <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
     <!-- Contact Javascript File -->
-    <script src="{{asset('mail/jqBootstrapValidation.min.js')}}"></script>
-    <script src="{{asset('mail/contact.js')}}"></script>
+    <script src="{{ asset('mail/jqBootstrapValidation.min.js') }}"></script>
+    <script src="{{ asset('mail/contact.js') }}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>

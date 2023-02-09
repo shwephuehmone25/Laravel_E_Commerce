@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->nullable();
             $table->string('name');
             $table->longText('description');
+            $table->string('sizes');
+            $table->string('colors');
             $table->integer('price');
-            $table->string('image')->default('default.jpg');
             $table->timestamps();
             $table->softDeletes();
         });

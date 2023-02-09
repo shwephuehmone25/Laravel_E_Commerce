@@ -77,9 +77,9 @@ Route::get('/export/categories', [AdminCategoryController::class, 'exportCategor
 Route::post('import/categories', [AdminCategoryController::class, 'importCategory'])->name('categories.import');
 
 Route::get('product/lists/show', [AdminProductController::class, 'getAllProducts'])->name('products.lists');
-Route::get('product/edit/{product}', [AdminProductController::class, 'edit'])->name('product.edit');
-Route::post('product/edit/{product}', [AdminProductController::class, 'update'])->name('update.product');
-Route::delete('/product/{product}', [AdminProductController::class, 'destroy'])->name('product.remove');
+Route::get('admin/product/edit/{product}', [AdminProductController::class, 'edit'])->name('edit');
+Route::post('admin/product/edit/{product}', [AdminProductController::class, 'update'])->name('update.product');
+Route::delete('delete/product/{product}', [AdminProductController::class, 'destroy'])->name('product.remove');
 
 Route::get('/admin/dashboard', function () {
 

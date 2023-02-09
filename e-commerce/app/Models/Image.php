@@ -14,4 +14,12 @@ class Image extends Model
         'imageable_type',
         'url',
     ];
+
+    /**
+     * Get all of the owning commentable models.
+     */
+    public function imagable()
+    {
+        return $this->morphTo();
+    }
 }

@@ -12,7 +12,7 @@ class Product extends Model implements Likeable
 {
     use HasFactory, SoftDeletes, Likes;
 
-    public $fillable = ['user_id', 'name', 'description', 'price', 'image'];
+    public $fillable = ['user_id', 'name', 'description', 'sizes', 'colors', 'price', 'image'];
 
     /**
      * Get the user that owns the product.
@@ -51,4 +51,13 @@ class Product extends Model implements Likeable
             $query->where('name', 'LIKE', '%' . $search . '%');
         });
     }
+
+    /**
+     * Get all of the product's image.
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imagable');
+    }
+
 }
