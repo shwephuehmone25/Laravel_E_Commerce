@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
 
@@ -61,5 +62,13 @@ class UserController extends Controller
 
         return view('user.profile')
             ->with("info", "User Info changed successfully!");
+    }
+
+    public function getMyPost($user_id)
+    {
+        $user = User::findOrFail($user_id = auth()->id());
+        $products = Product::filter(request('search'))->whereBelongsTo($user)->orderBy('id', 'desc')->paginate(10);
+
+        return view('user.mypost', compact('products'));
     }
 }

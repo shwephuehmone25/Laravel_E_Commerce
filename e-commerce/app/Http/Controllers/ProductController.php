@@ -130,8 +130,8 @@ class ProductController extends Controller
     {
 
         if ($request->file('image')) {
-            if (File::exists(storage_path('app/public/images/') . $product->image)) {
-                File::delete(storage_path('app/public/images/') . $product->image);
+            if (file_exists(storage_path('app/public/images/') . $product->image)) {
+                unlink(storage_path('app/public/images/') . $product->image);
             }
 
             $imageName = time() . '.' . $request->file('image')->extension();
@@ -158,8 +158,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if (File::exists(storage_path('app/public/images/') . $product->image)) {
-            File::delete(storage_path('app/public/images/') . $product->image);
+        // if (File::exists(storage_path('app/public/images/') . $product->image)) {
+        //     File::delete(storage_path('app/public/images/') . $product->image);
+        // }
+        if (file_exists(storage_path('app/public/images/') . $product->image)) {
+            unlink(storage_path('app/public/images/') . $product->image);
         }
         $product->categories()->sync([]);
         $product->delete();

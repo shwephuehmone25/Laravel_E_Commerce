@@ -45,7 +45,7 @@
                     <li>
                         <button class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
                             <i class="fas fa-file text-primary"></i>
-                            <span class="px-1"><a href="#">{{ __('My Post') }}</a></span>
+                            <span class="px-1"><a href="{{route('mypost.show',Auth::user()->id)}}">{{ __('My Post') }}</a></span>
                         </button>
                     </li>
                     <li>
