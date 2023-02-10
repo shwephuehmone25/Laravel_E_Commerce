@@ -46,6 +46,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('users/edit/{id}', [UserController::class, 'updateCart'])->name('user.update');
     Route::get('/profile/{id}', [UserController::class, 'showProfile'])->name('profile');
     Route::get('/mypost/{user_id}', [UserController::class, 'getMyPost'])->name('mypost.show');
+    Route::get('/contact', [UserController::class, 'getContact'])->name('contact.get');
+    Route::get('checkout', [ProductController::class, 'checkOut'])->name('order.checkout');
+    Route::post('/rating/{product}', [ProductController::class, 'getRatings'])->name('ratings.get');
 
     Route::post('like', [ProductController::class, 'like'])->name('like');
     Route::delete('like', [ProductController::class, 'unlike'])->name('unlike');

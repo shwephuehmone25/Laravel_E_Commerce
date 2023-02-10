@@ -7,10 +7,11 @@ use App\Models\Concerns\Likes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use willvincent\Rateable\Rateable;
 
 class Product extends Model implements Likeable
 {
-    use HasFactory, SoftDeletes, Likes;
+    use HasFactory, SoftDeletes, Likes, Rateable;
 
     public $fillable = ['user_id', 'name', 'description', 'price', 'image'];
 
@@ -50,5 +51,11 @@ class Product extends Model implements Likeable
         return $query->when($search ?? false, function ($query, $search) {
             $query->where('name', 'LIKE', '%' . $search . '%');
         });
+    }
+
+    public function rating()
+    {
+
+        return $this->hasMany(Rating::class);
     }
 }

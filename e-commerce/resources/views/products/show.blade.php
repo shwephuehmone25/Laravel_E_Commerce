@@ -24,6 +24,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/rating.css') }}">
 </head>
 
 <body>
@@ -143,60 +144,60 @@
                             <small class="fas fa-star-half-alt"></small>
                             <small class="far fa-star"></small>
                         </div>
-                        <small class="pt-1">(50 Reviews)</small>
+                        <small class="pt-1">({{ $product->user_sum_rating }} Reviews)</small>
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">${{ $product->price }}</h3>
-                    <p class="mb-4">{!!$product->description !!}</p>
+                    <p class="mb-4">{!! $product->description !!}</p>
                     <div class="d-flex mb-3">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-1" name="size">
-                            <label class="custom-control-label" for="size-1">XS</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-2" name="size">
-                            <label class="custom-control-label" for="size-2">S</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-3" name="size">
-                            <label class="custom-control-label" for="size-3">M</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-4" name="size">
-                            <label class="custom-control-label" for="size-4">L</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-5" name="size">
-                            <label class="custom-control-label" for="size-5">XL</label>
-                        </div>
-                    </form>
-                </div>  
+                        <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
+                        <form>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="size-1" name="size">
+                                <label class="custom-control-label" for="size-1">XS</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="size-2" name="size">
+                                <label class="custom-control-label" for="size-2">S</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="size-3" name="size">
+                                <label class="custom-control-label" for="size-3">M</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="size-4" name="size">
+                                <label class="custom-control-label" for="size-4">L</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="size-5" name="size">
+                                <label class="custom-control-label" for="size-5">XL</label>
+                            </div>
+                        </form>
+                    </div>
                     <div class="d-flex mb-4">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-1" name="color">
-                            <label class="custom-control-label" for="color-1">Black</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-2" name="color">
-                            <label class="custom-control-label" for="color-2">White</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-3" name="color">
-                            <label class="custom-control-label" for="color-3">Red</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-4" name="color">
-                            <label class="custom-control-label" for="color-4">Blue</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-5" name="color">
-                            <label class="custom-control-label" for="color-5">Green</label>
-                        </div>
-                    </form>
-                </div>  
+                        <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
+                        <form>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="color-1" name="color">
+                                <label class="custom-control-label" for="color-1">Black</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="color-2" name="color">
+                                <label class="custom-control-label" for="color-2">White</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="color-3" name="color">
+                                <label class="custom-control-label" for="color-3">Red</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="color-4" name="color">
+                                <label class="custom-control-label" for="color-4">Blue</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="color-5" name="color">
+                                <label class="custom-control-label" for="color-5">Green</label>
+                            </div>
+                        </form>
+                    </div>
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <div class="input-group quantity mr-3" style="width: 130px;">
                             <div class="input-group-btn">
@@ -328,15 +329,29 @@
                                 <h4 class="mb-4">Leave a review</h4>
                                 <small>Your email address will not be published. Required fields are marked *</small>
                                 <div class="d-flex my-3">
-                                    <p class="mb-0 mr-2">Your Rating * :</p>
-                                    <div class="text-primary">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
+                                    <p class="mr-2">Your Rating * :</p>
+                                    <form action="{{ route('ratings.get', $product->id) }}" id="addStar"
+                                        method="POST">
+                                        @csrf
+                                        <div class="col-sm-12">
+                                            <input class="star star-5" value="5" id="star-5" type="radio"
+                                                name="star" />
+                                            <label class="star star-5 text-primary" for="star-5"></label>
+                                            <input class="star star-4" value="4" id="star-4" type="radio"
+                                                name="star" />
+                                            <label class="star star-4 text-primary" for="star-4"></label>
+                                            <input class="star star-3" value="3" id="star-3" type="radio"
+                                                name="star" />
+                                            <label class="star star-3 text-primary" for="star-3"></label>
+                                            <input class="star star-2" value="2" id="star-2" type="radio"
+                                                name="star" />
+                                            <label class="star star-2 text-primary" for="star-2"></label>
+                                            <input class="star star-1" value="1" id="star-1" type="radio"
+                                                name="star" />
+                                            <label class="star star-1 text-primary" for="star-1"></label>
+                                        </div>
                                 </div>
+                                </form>
                                 <form>
                                     <div class="form-group">
                                         <label for="message">Your Review *</label>
@@ -344,14 +359,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Your Name *</label>
-                                        <input type="text" class="form-control" id="name">
+                                        <input type="text" class="form-control" id="name" />
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Your Email *</label>
-                                        <input type="email" class="form-control" id="email">
+                                        <input type="email" class="form-control" id="email" />
                                     </div>
                                     <div class="form-group mb-0">
-                                        <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                                        <input type="submit" value="Leave Your Review"
+                                            class="btn btn-primary px-3" />
                                     </div>
                                 </form>
                             </div>
@@ -361,16 +377,20 @@
             </div>
         </div>
     </div>
+    </div>
     <!-- Shop Detail End -->
 
     <!-- Footer Start -->
-   @extends('layouts.footer')
+    @extends('layouts.footer')
     <!-- Footer End -->
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
+    <script>
+        $('#addStar').change('.star', function(e) {
+            $(this).submit();
+        });
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -8,9 +8,13 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Requests\UnlikeRequest;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\Rating;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
+
+// use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -285,5 +289,27 @@ class ProductController extends Controller
             }
             session()->flash('success', 'A Product is removed successfully');
         }
+    }
+
+    public function checkOut(Request $request)
+    {
+
+        $order = Order::create([
+            'quantity' => $request->quantity,
+            'total_price' => $request->total_price,
+            'date_of_order' => $request->date_of_order,
+        ]);
+
+        return redirect()->route('lists', compact('order'));
+    }
+
+    public function getRatings(Request $request, Product $product)
+    {
+        $rating = new Rating;
+        $rating->user_id = Auth::id();
+        $rating->rating = $request->input('star');
+        $product->ratings()->save($rating);
+
+        return redirect()->back();
     }
 }
