@@ -49,9 +49,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
-                            <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                            <a href="{{route('lists')}}" class="nav-item nav-link active">Home</a>
+                            <a href="{{route('cart.list')}}" class="nav-item nav-link">Shop</a>
+                            <a href="{{route('cart.list')}}" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -81,19 +81,19 @@
                                         class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
                                         <i class="fas fa-shopping-cart text-primary"></i>
                                         <span class="px-1">
-                                            <a href="{{ route('cart.list') }}">Shopping Cart</a>
+                                            <a href="{{ route('cart.list') }}">{{ __('Shopping Cart')}}</a>
                                         </span>
                                     </button>
                                     <button
                                         class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
                                         <i class="fa-solid fa-right-from-bracket text-primary"></i>
                                         <span class="px-1">
-                                            <a href="checkout.html">Checkout</a>
+                                            <a href="checkout.html">{{ __('Checkout')}}</a>
                                         </span>
                                     </button>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="{{route('contact.get')}}" class="nav-item nav-link">{{ __('Contact')}}</a>
                         </div>
                     </div>
                 </nav>

@@ -77,6 +77,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex">
+                            {!! $users->links() !!}
+                        </div>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -88,7 +91,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; E-Shopper 2023</span>
                     </div>
                 </div>
             </footer>

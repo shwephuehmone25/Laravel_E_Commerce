@@ -56,7 +56,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         var labels = {{ Js::from($labels) }};
         var users = {{ Js::from($data) }};
 
@@ -97,7 +97,7 @@
             document.getElementById('myChart'),
             config
         );
-    </script> --}}
+    </script>
 
 <script>
     @if(Session::has('message'))

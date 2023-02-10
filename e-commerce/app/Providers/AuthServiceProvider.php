@@ -36,10 +36,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('like', function (User $user, Likeable $likeable) {
             if (!$likeable->exists) {
+
                 return Response::deny("Cannot like an object that doesn't exists");
             }
 
             if ($user->hasLiked($likeable)) {
+
                 return Response::deny("Cannot like the same thing twice");
             }
 
@@ -48,10 +50,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('unlike', function (User $user, Likeable $likeable) {
             if (!$likeable->exists) {
+
                 return Response::deny("Cannot unlike an object that doesn't exists");
             }
 
             if (!$user->hasLiked($likeable)) {
+
                 return Response::deny("Cannot unlike without liking first");
             }
 

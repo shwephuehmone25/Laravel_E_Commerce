@@ -48,11 +48,11 @@
                                     <td>{{$p->id}}</td>
                                     <td>{{$p->user->name}}</td>
                                     <td>{{$p->name}}</td>
-                                    <td>{{$p->description}}</td>
+                                    <td>{!!$p->description!!}</td>
                                     <td>{{$p->price}}</td>
                                     <td>
                                         <img src="{{ asset('storage/images/' . $p->image) }}"
-                                        alt="Product" width="50%" height="50%">    
+                                        alt="Product" width="30%" height="30%">    
                                     </td>
                                     <td>
                                         <form action="{{route('product.remove',$p->id)}}" method="Post"
@@ -74,7 +74,10 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                          </table>       
+                          </table>     
+                          <div class="d-flex">
+                            {!! $products->links() !!}
+                        </div>  
                     </div>
                 </div>
                 <!-- /.container-fluid -->

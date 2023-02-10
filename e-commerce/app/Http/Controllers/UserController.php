@@ -67,8 +67,18 @@ class UserController extends Controller
     public function getMyPost($user_id)
     {
         $user = User::findOrFail($user_id = auth()->id());
-        $products = Product::filter(request('search'))->whereBelongsTo($user)->orderBy('id', 'desc')->paginate(10);
+        $products = Product::filter(request('search'))
+            ->whereBelongsTo($user)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
         return view('user.mypost', compact('products'));
+    }
+
+    public function getContact()
+    {
+        $products = Product::all();
+
+        return view('layouts.contact', compact('products'));
     }
 }

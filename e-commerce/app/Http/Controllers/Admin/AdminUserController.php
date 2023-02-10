@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserStoreRequest;
 use App\Imports\ImportUser;
 use App\Models\User;
-use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminUserController extends Controller
@@ -20,7 +20,7 @@ class AdminUserController extends Controller
      */
     public function getAllUser()
     {
-        $users = User::orderBy('id', 'desc')->get();
+        $users = User::orderBy('id', 'desc')->paginate(10);
 
         return view('admin.user.index', compact('users'));
     }
