@@ -45,7 +45,6 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Status</th>
                                     <th style="width: 30%;">Actions</th>
                                 </tr>
                             </thead>
@@ -55,7 +54,6 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->status }}</td>
                                         <td>
                                             <form action="{{ route('user.destroy',$user->id) }}" method="Post"
                                                 onsubmit="return confirm('{{ trans('Are You Sure ? ') }}');">

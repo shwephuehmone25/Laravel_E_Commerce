@@ -112,6 +112,7 @@
     <!-- Shop Detail Start -->
     <div class="container-fluid py-5">
         @foreach ($products as $product)
+        {{ Breadcrumbs::render('product', $product) }}
             <div class="row px-xl-5">
                 <div class="col-lg-5 pb-5">
                     <div id="product-carousel" class="carousel slide" data-ride="carousel">
@@ -376,7 +377,7 @@
     </div>
     </div>
     <!-- Shop Detail End -->
-
+    
     <!-- Footer Start -->
     @extends('layouts.footer')
     <!-- Footer End -->

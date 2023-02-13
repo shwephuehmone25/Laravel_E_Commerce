@@ -22,8 +22,8 @@
 <body>
     @include('layouts.navigation')
     <div class="container">
-        <div class="row row-cols-3 g-3 mt-5">
-            @foreach ($products as $p)
+        <div class="row row-cols-3 g-3 mt-5">    
+            @foreach ($products as $p)   
                 <div class="col">
                     <div class="card">
                         <img src="{{ asset('storage/images/' . $p->image) }}" class="card-img-top" alt="Skyscrapers" />
@@ -69,9 +69,11 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @endforeach    
         </div>
+        {{-- {{ Breadcrumbs::render('mypost', $p->user) }} --}}
     </div>
+
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     {!! Toastr::message() !!}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

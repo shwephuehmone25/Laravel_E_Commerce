@@ -22,6 +22,7 @@
     <!-- Topbar End -->
     <section class="h-100 gradient-custom-2">
         <div class="container py-5 h-100">
+            {{ Breadcrumbs::render('profile', $user) }}
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-lg-9 col-xl-7">
                     <div class="card">
@@ -37,7 +38,7 @@
                                     Edit profile
                                 </button>
 
-                                <!-- Modal -->
+                                <!--Profile Modal -->
                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                     aria-hidden="true">
