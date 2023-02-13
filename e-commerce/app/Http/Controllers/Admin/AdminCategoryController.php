@@ -11,6 +11,34 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AdminCategoryController extends Controller
 {
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createCatgory()
+    {
+
+        return view('admin.category.create');
+    }
+
+    /**
+     * Store a newly created products in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeCategory(Request $request)
+    {
+
+        $category = Category::create([
+            'name' => $request->name,
+        ]);
+
+        return view('admin.category.index', compact('category'));
+    }
+
     /**
      * Summary of show category lists
      * @param $request
@@ -25,6 +53,7 @@ class AdminCategoryController extends Controller
 
     public function exportCategory(Request $request)
     {
+
         return Excel::download(new ExportCategory, 'categories.xlsx');
     }
 

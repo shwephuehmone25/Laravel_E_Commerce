@@ -89,17 +89,12 @@
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
-                        </div>
                     </div>
                 </nav>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
-
 
     <!-- Page Header Start -->
     <div class="container-fluid bg-secondary mb-5">
@@ -135,7 +130,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7 pb-5">
-                    <h3 class="font-weight-semi-bold">{{ $product->name }}</h3>
+                    <h3 class="font-weight-semi-bold text-capitalize">{{ $product->name }}</h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
                             <small class="fas fa-star"></small>
@@ -212,11 +207,13 @@
                                 </button>
                             </div>
                         </div>
+                        @if ($product->user_id !== Auth::user()->id)
                         <button class="btn text-dark btn-info">
                             <a href="{{ route('add.to.cart', $product->id) }}">
                                 <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
                             </a>
                         </button>
+                        @endif
                     </div>
                     <div class="d-flex pt-2">
                         <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -33,6 +34,13 @@ class AuthServiceProvider extends ServiceProvider
 
             return $product->user_id == $user->id;
         });
+
+        // Gate::before(function (User $user) {
+        //     if ($user->id == Auth::user()->id) {
+
+        //         return true;
+        //     }
+        // });
 
         Gate::define('like', function (User $user, Likeable $likeable) {
             if (!$likeable->exists) {

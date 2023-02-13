@@ -20,8 +20,7 @@
                     @include('partials.lang')
                     </div>
                 </div>
-            </div>
-            
+            </div>  
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="dropdown">

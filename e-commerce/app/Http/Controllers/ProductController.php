@@ -87,6 +87,8 @@ class ProductController extends Controller
         ]);
         $product->categories()->sync($request->category);
 
+        //Toastr::success('Product Create Successfully!', 'SUCCESS');
+
         return redirect()->route('lists')->with('success', 'A product Created Successfully');
     }
 

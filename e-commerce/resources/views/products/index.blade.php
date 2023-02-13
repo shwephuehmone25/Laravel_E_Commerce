@@ -70,7 +70,7 @@
                                     <button
                                         class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
                                         <i class="fas fa-file text-primary"></i>
-                                        <span class="px-1"><a href="#">{{ __('My Post') }}</a></span>
+                                        <span class="px-1"><a href="{{route('mypost.show',Auth::user()->id)}}">{{ __('My Post') }}</a></span>
                                     </button>
                                     <button
                                         class="d-flex mx-2 align-items-center justify-content-center border-0 bg-transparent">
@@ -206,47 +206,14 @@
             @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 pb-1">
                     <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        @can('manage_products', $product)
-                            <div class="dropdown">
-                                <button class="btn btn-white p-0 border-0" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" class="list-btn"
-                                        fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M4.39 12c0 .55.2 1.02.59 1.41.39.4.86.59 1.4.59.56 0 1.03-.2 1.42-.59.4-.39.59-.86.59-1.41 0-.55-.2-1.02-.6-1.41A1.93 1.93 0 0 0 6.4 10c-.55 0-1.02.2-1.41.59-.4.39-.6.86-.6 1.41zM10 12c0 .55.2 1.02.58 1.41.4.4.87.59 1.42.59.54 0 1.02-.2 1.4-.59.4-.39.6-.86.6-1.41 0-.55-.2-1.02-.6-1.41a1.93 1.93 0 0 0-1.4-.59c-.55 0-1.04.2-1.42.59-.4.39-.58.86-.58 1.41zm5.6 0c0 .55.2 1.02.57 1.41.4.4.88.59 1.43.59.57 0 1.04-.2 1.43-.59.39-.39.57-.86.57-1.41 0-.55-.2-1.02-.57-1.41A1.93 1.93 0 0 0 17.6 10c-.55 0-1.04.2-1.43.59-.38.39-.57.86-.57 1.41z"
-                                            fill="#000"></path>
-                                    </svg>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('product.edit', $product->id) }}"
-                                            class="dropdown-item text-decoration-none text-success">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            {{ __('Edit') }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST"
-                                            onsubmit="return confirm('{{ trans('Are You Sure ? ') }}');"
-                                            style="display: inline-block;">
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="submit" class="delete-btn btn btn-sm text-danger"
-                                                value="Delete"><i class="fa-solid fa-trash"></i>
-                                                {{ __('Delete') }}
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        @endcan
+                       
                         <a href="" class="cat-img position-relative overflow-hidden mb-3">
                             <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
                                 alt="Product">
                         </a>
                         <div class="row">
                             <div class="col-6">
-                                <h5 class="font-weight-semi-bold m-0">{{ $product->name }}</h5>
+                                <h5 class="font-weight-semi-bold m-0 text-capitalize">{{ $product->name }}</h5>
                             </div>
                         </div>
                         @include('user.likeable', ['model' => $product])
@@ -299,7 +266,7 @@
                                 alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">{{ $product->name }}</h6>
+                            <h6 class="text-capitalize text-truncate mb-3">{{ $product->name }}</h6>
                             <div class="d-flex justify-content-center">
                                 <h6>${{ $product->price }}</h6>
                                 <h6 class="text-muted ml-2"><del>${{ $product->price }}</del></h6>
@@ -355,7 +322,7 @@
                                 alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">{{ $latestProduct->name }}</h6>
+                            <h6 class="text-truncate mb-3 text-capitalize">{{ $latestProduct->name }}</h6>
                             <div class="d-flex justify-content-center">
                                 <h6>${{ $latestProduct->price }}</h6>
                                 <h6 class="text-muted ml-2"><del>${{ $latestProduct->price }}</del></h6>
@@ -374,40 +341,6 @@
         </div>
     </div>
     <!-- Products End -->
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <div class="vendor-item border p-4">
-                    <img src="img/vendor-1.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="vendor-item border p-4">
-                    <img src="img/vendor-2.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="vendor-item border p-4">
-                    <img src="img/vendor-3.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="vendor-item border p-4">
-                    <img src="img/vendor-4.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="vendor-item border p-4">
-                    <img src="img/vendor-5.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="vendor-item border p-4">
-                    <img src="img/vendor-6.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{-- <div class="breadcrumb-section">
         <div class="container">
@@ -422,6 +355,9 @@
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     <!-- JavaScript Libraries -->
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>

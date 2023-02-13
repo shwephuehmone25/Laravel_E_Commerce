@@ -40,7 +40,7 @@
 
                     <div class="d-flex flex-column mb-3">
                         <label for="category">{{__('Select Category:')}}</label>
-                        {{-- <select class="selectpicker" id="my-select" name="category[]" id="floatingSelect"
+                        <select class="selectpicker" id="my-select" name="category[]" id="floatingSelect"
                             aria-label="Floating label select example" multiple data-live-search="true">
 
                             @foreach ($product->categories as $category)
@@ -53,7 +53,7 @@
                                 </option>
                             @endforeach
 
-                        </select> --}}
+                        </select>
                         @error('category')
                             <small class="text-danger">*{{ $message }}</small>
                         @enderror

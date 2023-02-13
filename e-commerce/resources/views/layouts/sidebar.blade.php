@@ -75,7 +75,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Category:</h6>
                 <a class="collapse-item" href="{{route('category.lists')}}"><i class="fa-solid fa-list mr-1"></i>Category Lists</a>
-                <a class="collapse-item" href="#"><i class="fa-solid fa-square-plus mr-1"></i>Create Category</a>
+                <a class="collapse-item" href="{{route('create.category')}}"><i class="fa-solid fa-square-plus mr-1"></i>Create Category</a>
             </div>
         </div>
     </li>
