@@ -6,8 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "brian2694/laravel-toastr": "^5.57",
         "darryldecode/cart": "^4.2",
-        "davejamesmiller/laravel-breadcrumbs": "5.x",
+        "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
@@ -16,8 +17,7 @@
         "laravelcollective/html": "^6.3",
         "maatwebsite/excel": "^3.1",
         "mckenziearts/laravel-notify": "^2.3",
-        "willvincent/laravel-rateable": "^3.0",
-        "brian2694/laravel-toastr": "^5.57"
+        "willvincent/laravel-rateable": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
