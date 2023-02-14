@@ -17,9 +17,10 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
+            //'product_id' => Product::all()->random()->id,
             'quantity' => $this->faker->randomDigit,
             'total_price' => $this->faker->numberBetween($min = 5000, $max = 10000),
-            'date_of_order' => $this->faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+            //'date_of_order' => $this->faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
         ];
     }
 }

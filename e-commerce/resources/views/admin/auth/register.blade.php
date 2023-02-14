@@ -21,7 +21,7 @@
                 @csrf
 
                 <div class="form-holder active">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus
                         placeholder="Enter your name" >
 
                         @error('name')
@@ -33,7 +33,7 @@
 
                 <div class="form-holder">
                     
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email"
                         placeholder="example@gmail.com" >
 
                         @error('email')

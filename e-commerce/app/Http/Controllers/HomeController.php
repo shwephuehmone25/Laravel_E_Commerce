@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -30,7 +30,8 @@ class HomeController extends Controller
     public function logout()
     {
         Auth::logout();
+        auth('admin')->logout();
 
-        return redirect('welcome')->with('info', 'Logged out Successfully');
+        return redirect('login')->with('info', 'Logged out Successfully');
     }
 }

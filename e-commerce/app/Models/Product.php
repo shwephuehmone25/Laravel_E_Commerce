@@ -58,4 +58,14 @@ class Product extends Model implements Likeable
 
         return $this->hasMany(Rating::class);
     }
+
+    /**
+     * The has Many Relationship
+     *
+     * @var array
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

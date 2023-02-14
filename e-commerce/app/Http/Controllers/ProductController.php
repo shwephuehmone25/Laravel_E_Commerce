@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Rating;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -100,9 +101,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $reviews = Review::all();
+        $categories = Category::all();
         $products = Product::where('id', $id)->get();
 
-        return view('products.show', compact('products'));
+        return view('products.show', compact('products', 'reviews', 'categories'));
     }
 
     /**
@@ -295,8 +298,9 @@ class ProductController extends Controller
 
     public function checkOut(Request $request)
     {
-
         $order = Order::create([
+            'user_id' => $request->user_id,
+            'product_id' => $request->product_id,
             'quantity' => $request->quantity,
             'total_price' => $request->total_price,
             'date_of_order' => $request->date_of_order,

@@ -342,11 +342,6 @@
     </div>
     <!-- Products End -->
 
-    {{-- <div class="breadcrumb-section">
-        <div class="container">
-            {{ Breadcrumbs::render('products') }}
-        </div>
-    </div> --}}
     <!-- Footer Start -->
     @include('layouts.footer')
     <!-- Footer End -->

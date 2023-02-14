@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-
+    public $fillable = ['quantity', 'total_price'];
     /**
      * Get the user that owns the product.
      */

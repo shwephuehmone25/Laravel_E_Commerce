@@ -46,7 +46,7 @@ class AdminCategoryController extends Controller
      */
     public function getAllCategory()
     {
-        $category = Category::all();
+        $category = Category::orderBy('id', 'desc')->get();
 
         return view('admin.category.index', compact('category'));
     }

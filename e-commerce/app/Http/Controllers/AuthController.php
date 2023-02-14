@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->middleware('guest:admin');
+        //$this->middleware('guest:admin');
     }
     /**
      * Handle an incoming registration request.
@@ -63,20 +63,5 @@ class AuthController extends Controller
             'password' => Hash::make($request['password']),
         ]);
         return redirect()->intended('admin');
-    }
-
-    /**
-     * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-
-        return [
-            'message' => 'Successfully Logged out',
-        ];
     }
 }

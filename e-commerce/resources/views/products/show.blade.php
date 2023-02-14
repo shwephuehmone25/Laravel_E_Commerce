@@ -42,29 +42,15 @@
                     <h6 class="m-0">Categories</h6>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
-                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light"
-                    id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
-                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i
-                                    class="fa fa-angle-down float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div>
-                        </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
-                    </div>
+                @foreach ($categories as $category)
+                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
+                    id="navbar-vertical">
+                    <a href="{{ route('category.show', $category->id) }}" class="nav-item nav-link"
+                        value="{{ $category['id'] }}">
+                        {{ $category['name'] }}
+                    </a>
                 </nav>
+            @endforeach
             </div>
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
@@ -112,7 +98,7 @@
     <!-- Shop Detail Start -->
     <div class="container-fluid py-5">
         @foreach ($products as $product)
-        {{ Breadcrumbs::render('product', $product) }}
+            {{ Breadcrumbs::render('product', $product) }}
             <div class="row px-xl-5">
                 <div class="col-lg-5 pb-5">
                     <div id="product-carousel" class="carousel slide" data-ride="carousel">
@@ -140,11 +126,11 @@
                             <small class="fas fa-star-half-alt"></small>
                             <small class="far fa-star"></small>
                         </div>
-                        <small class="pt-1">({{ $product->user_sum_rating }} Reviews)</small>
+                        <small class="pt-1">({{$product->reviews->count()}} Reviews)</small>
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">${{ $product->price }}</h3>
                     <p class="mb-4">{!! $product->description !!}</p>
-                    <div class="d-flex mb-3">
+                    {{-- <div class="d-flex mb-3">
                         <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -168,8 +154,8 @@
                                 <label class="custom-control-label" for="size-5">XL</label>
                             </div>
                         </form>
-                    </div>
-                    <div class="d-flex mb-4">
+                    </div> --}}
+                    {{-- <div class="d-flex mb-4">
                         <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -193,9 +179,9 @@
                                 <label class="custom-control-label" for="color-5">Green</label>
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                     <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
+                        {{-- <div class="input-group quantity mr-3" style="width: 130px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-primary btn-minus">
                                     <i class="fa fa-minus"></i>
@@ -207,13 +193,13 @@
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> --}}
                         @if ($product->user_id !== Auth::user()->id)
-                        <button class="btn text-dark btn-info">
-                            <a href="{{ route('add.to.cart', $product->id) }}">
-                                <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
-                            </a>
-                        </button>
+                            <button class="btn text-dark btn-info">
+                                <a href="{{ route('add.to.cart', $product->id) }}">
+                                    <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
+                                </a>
+                            </button>
                         @endif
                     </div>
                     <div class="d-flex pt-2">
@@ -241,7 +227,7 @@
                 <div class="nav nav-tabs justify-content-center border-secondary mb-4">
                     <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Description</a>
                     <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Information</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Reviews ({{$product->reviews->count()}})</a>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tab-pane-1">
@@ -304,13 +290,14 @@
                     </div>
                     <div class="tab-pane fade" id="tab-pane-3">
                         <div class="row">
-                            <div class="col-md-6">
-                                <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
+                            <div class="col-md-6">    
+                                <h4 class="mb-4">{{$product->reviews->count()}} reviews for "{{$product->name}}"</h4>
+                                @foreach ($reviews as $review)
                                 <div class="media mb-4">
-                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
-                                        style="width: 45px;">
+                                    <img src="{{ asset('storage/images/' . $review->user->image) }}" alt="Image" class="img-fluid mr-3 mt-1"
+                                    onerror="this.onerror=null;this.src='{{ asset('img/avatar.jpg') }}';"   style="width: 45px;" >
                                     <div class="media-body">
-                                        <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
+                                        <h6>{{$review->user->name}}<small> - <i>{{$review->created_at->diffForHumans()}}</i></small></h6>
                                         <div class="text-primary mb-2">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -318,10 +305,10 @@
                                             <i class="fas fa-star-half-alt"></i>
                                             <i class="far fa-star"></i>
                                         </div>
-                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum
-                                            et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
+                                        <p>{{$review->body}}</p>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                             <div class="col-md-6">
                                 <h4 class="mb-4">Leave a review</h4>
@@ -350,18 +337,12 @@
                                         </div>
                                 </div>
                                 </form>
-                                <form>
+                                <form method="post" action="{{ route('review.store') }}">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="message">Your Review *</label>
-                                        <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="name">Your Name *</label>
-                                        <input type="text" class="form-control" id="name" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Your Email *</label>
-                                        <input type="email" class="form-control" id="email" />
+                                        <textarea id="message" cols="30" rows="5" class="form-control" name="body"></textarea>
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}" />
                                     </div>
                                     <div class="form-group mb-0">
                                         <input type="submit" value="Leave Your Review"
@@ -377,7 +358,7 @@
     </div>
     </div>
     <!-- Shop Detail End -->
-    
+
     <!-- Footer Start -->
     @extends('layouts.footer')
     <!-- Footer End -->
