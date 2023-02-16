@@ -34,7 +34,7 @@
                             <thead class="bg-mute text-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th>User</th>
+                                    <th>Author</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Price</th>

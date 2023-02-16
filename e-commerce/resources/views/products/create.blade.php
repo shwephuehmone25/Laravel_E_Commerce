@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  @include('layouts.navigation')
+    @include('layouts.navigation')
     <div class="horizontal"></div>
     <div class="w-100 d-flex justify-content-center align-items-center">
         <div class="container-wrapper">
@@ -53,7 +53,7 @@
                             placeholder="Image" />
                         <div class="preview my-2 border-1 rounded-3 overflow-hidden" style="max-width: 150px">
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ0AAAB2CAMAAADle2GlAAAAVFBMVEXy8vJmZmbz8/P29vZdXV1tbW3p6eliYmKDg4Pb29tMTEz9/f35+fne3t7S0tKOjo6dnZ3BwcFWVlawsLC2traXl5d8fHxycnLKysqpqalRUVGjo6Oq2y0/AAAEzklEQVR4nO2aYZuqLBCGlUHEl0EwFW39///zgJtlZUWk9J5z+XzYbZXg3plhBsQk2fVPinwb4Kl2unDtdOHa6cK104VrpwvXTheunS5cO124drpw7XTh2unCtdOF6w06grCO0HtQ/4bANF9HWsLadCDTw3+r6OeQSc9hvelQUc3WUUuVWJlO5CkDICsIWEpXp6MZW2eCE5ZR4dfVt+g8m/r2udPdN/Xt86+js/PvHarz12LQEcEKCfge2fjFCHQgeZqmpoK37ReBDvs0t3T5ofatmRHpCEtPOlSP8B5F5fZ0UNMTXW4WQ48AYbbyLfW/PR2qfDJeuphoRKmyTskl8gh0/DkdNgfbIKf9Al4EuvZMly30ATKfbt5HZYS466e4o+39SAQm09L23ngxMor6xcu7BcficWK3U/oOLwIdYYrmOaXZwh4ByktQpvcNYtQKInqt2mopriCb0VFzu9KMswqwez+yUMcItDM4i1ffNPrqCgr7Q3qlvLwOvW/SEZneKO+uR/kiHUGT3+LdpJUv0kFzuIVL059yPne+RwclvYezmqeVr9GR5N6vY+ip/wOdGJZNl9Lm8uApDh0BxOtcDP3PMpytaBffRqEDUtZNMc+0wLJHcGnOz9+Osush/EAPtJ3hTSuDZd8OE1GEfQUwM6JQde4CmydwtmUPseiAnVdw6mQ9kE/hLsvUzekgMWeUEx5J+GIymRnvVDK2piPMzOz069yHyWTWsMEIdNZMVyRuajwqEtcanxdvS3dfEKxzcam+3irnsDXdZULM8V7N2FO7I2xLR2Apq9mIx9rHena1siHdbcxdrAfCw3q5TSvb0ZHkUT2gbYL1azyqt6MjT4oVVQLrh6uAS7MeN6KDB26d8IjwsF4qN6JL2ueVVPs4N+fJJnQv4H6d27x0Lq27LeieLZAmPB/n5luck6UvqvyI1xKvmbsBnY+osmn55b/xLTqX914vCNY/Y+w8HOuUm+5lk25t20HlaTyP8Hx8ihBKl0CT5esoa1Z/a8FtdIp1xLwP19455VrjpYBR/iO+QRdfO124AukWHmZ/COI5jJeg1pgQOcyeDlTHgHPuFwqkwyEtCEh1mYNQumNu95m4Bf54cboZ9v7AJ3SDFpbOplXJTnh2wwDMrp/dBWBy3IVI5u4wGThOqGd1aUbbIVf86DqBvhZKaXNUOpNQmNb+BKUU77Hkgwl7WyScrj+KQmFzFEKVZIw7YSrBDomotL0keu0+oOnRMFHq999u+IgOu0QqVBKwqdHR1YJLwjoBpUZJRD8I3QMOFeMCGA+aMuF0Yqhs3FmXQa8nugJYh44OZZ0N9m+7Uq5kp7XqItOB5It0o+0q05eDUHZe11WhEsbCBvqADnWjkDOCY6a7pjPShppoSwLHSnLEpH/7tZUP6NDSgUxbPFZCtG7oa7oORDUIN2VMRQxDyWPSOdslRLXATNOMzz7dnB1nhYs7oXXFDbM3j1klGtXzMqZniUu5hEmbdqvf8237B0j7uwD3KbFXSyZYUxwrgLIpgkwXXLzPFYrAKZONBWzs0F12L7BC32JiCpJAULL7gM6v84Fz3w3OcgeroSx1DsnSmwNvdLAayoP+Pxrgn1wbR9JOF66dLlw7Xbh2unDtdOEi6z0z3EJ/AIrCSHJt4zKDAAAAAElFTkSuQmCC"
-                                style="height: 80px; width: 80px" name="image" id="preview-image" />
+                                style="height: 80px; width: 80px" name="image" id="preview-image" accept="image/*" />
                         </div>
                         @error('image')
                             <small class="text-danger mt-2">*{{ $message }}</small>

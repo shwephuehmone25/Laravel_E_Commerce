@@ -65,11 +65,10 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         if (!Auth::attempt($request->only('email', 'password'))) {
+
             throw new AuthenticationException("Email or password is not valid");
         }
         $token = $request->user()->createToken('user-token');
-
-        notify()->success('Welcome to Laravel Notify ⚡️');
 
         return redirect()->route('lists')->with('success', 'Logged in Successfully');
     }

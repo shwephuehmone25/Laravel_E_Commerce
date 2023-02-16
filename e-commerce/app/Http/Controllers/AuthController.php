@@ -15,7 +15,6 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        //$this->middleware('guest:admin');
     }
     /**
      * Handle an incoming registration request.
@@ -41,13 +40,13 @@ class AuthController extends Controller
         return redirect('login')->with('success', 'Registered Successfully');
     }
 
-    public function sendMail()
+    public function sendMail($user)
     {
         $data = [
             'title' => 'Mail from Medium.com',
         ];
 
-        Mail::to('shwephue7889@gmail.com')->send(new VerifyMail($data));
+        Mail::to($user)->send(new VerifyMail($data));
     }
 
     public function showAdminRegisterForm()

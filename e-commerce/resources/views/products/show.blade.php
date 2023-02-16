@@ -130,7 +130,7 @@
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">${{ $product->price }}</h3>
                     <p class="mb-4">{!! $product->description !!}</p>
-                    {{-- <div class="d-flex mb-3">
+                    <div class="d-flex mb-3">
                         <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -154,8 +154,8 @@
                                 <label class="custom-control-label" for="size-5">XL</label>
                             </div>
                         </form>
-                    </div> --}}
-                    {{-- <div class="d-flex mb-4">
+                    </div>
+                    <div class="d-flex mb-4">
                         <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -179,9 +179,9 @@
                                 <label class="custom-control-label" for="color-5">Green</label>
                             </div>
                         </form>
-                    </div> --}}
+                    </div>
                     <div class="d-flex align-items-center mb-4 pt-2">
-                        {{-- <div class="input-group quantity mr-3" style="width: 130px;">
+                        <div class="input-group quantity mr-3" style="width: 130px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-primary btn-minus">
                                     <i class="fa fa-minus"></i>
@@ -193,7 +193,7 @@
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
-                        </div> --}}
+                        </div>
                         @if ($product->user_id !== Auth::user()->id)
                             <button class="btn text-dark btn-info">
                                 <a href="{{ route('add.to.cart', $product->id) }}">
